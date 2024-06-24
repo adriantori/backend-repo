@@ -27,7 +27,7 @@ exports.db = exports.admin = void 0;
 const admin = __importStar(require("firebase-admin"));
 exports.admin = admin;
 const firestore_1 = require("firebase-admin/firestore");
-const serviceAccount = require('./creds.json');
+const serviceAccount = require('../../creds.json');
 if (!admin.apps.length) {
     admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),

@@ -153,3 +153,100 @@ Issues? Report them at https://github.com/firebase/firebase-tools/issues and att
 [debug] [2024-06-24T12:31:37.066Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
 [debug] [2024-06-24T12:31:37.066Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
 [debug] [2024-06-24T12:31:37.067Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2024-06-24T12:35:16.132Z] File /home/adriantori/Documents/eBuddy/Test/backend-repo/src/config/firebaseConfig.ts changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /home/adriantori/Documents/eBuddy/Test/backend-repo/src/config/firebaseConfig.ts changed, reloading triggers"}}
+[debug] [2024-06-24T12:35:17.135Z] Validating nodejs source
+[debug] [2024-06-24T12:35:18.977Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "ts-node src/core/app.ts",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "dist/index.js",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.8",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2024-06-24T12:35:18.977Z] Building nodejs source
+[debug] [2024-06-24T12:35:18.978Z] Failed to find version of module node: reached end of search path /home/adriantori/Documents/eBuddy/Test/backend-repo/node_modules
+[info] ✔  functions: Using node@20 from host. 
+[debug] [2024-06-24T12:35:18.979Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-06-24T12:35:18.981Z] Found firebase-functions binary at '/home/adriantori/Documents/eBuddy/Test/backend-repo/node_modules/.bin/firebase-functions'
+[info] Serving at port 8706
+
+[debug] [2024-06-24T12:35:19.693Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
+[info] ✔  functions: Loaded functions definitions from source: api. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api."}}
+[debug] [2024-06-24T12:35:24.739Z] [worker-pool] Shutting down IDLE worker (us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Shutting down IDLE worker (us-central1-api)"}}
+[debug] [2024-06-24T12:35:24.739Z] [worker-us-central1-api-d4585191-99e0-4830-a8b7-da809e43d6d5]: FINISHING {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-d4585191-99e0-4830-a8b7-da809e43d6d5]: FINISHING"}}
+[debug] [2024-06-24T12:35:24.790Z] [worker-us-central1-api-d4585191-99e0-4830-a8b7-da809e43d6d5]: exited {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-d4585191-99e0-4830-a8b7-da809e43d6d5]: exited"}}
+[debug] [2024-06-24T12:35:24.790Z] [worker-us-central1-api-d4585191-99e0-4830-a8b7-da809e43d6d5]: FINISHED {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-d4585191-99e0-4830-a8b7-da809e43d6d5]: FINISHED"}}
+[debug] [2024-06-24T12:35:32.077Z] File /home/adriantori/Documents/eBuddy/Test/backend-repo/dist/config/firebaseConfig.js changed, reloading triggers {"metadata":{"emulator":{"name":"functions"},"message":"File /home/adriantori/Documents/eBuddy/Test/backend-repo/dist/config/firebaseConfig.js changed, reloading triggers"}}
+[debug] [2024-06-24T12:35:33.078Z] Validating nodejs source
+[debug] [2024-06-24T12:35:34.775Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "ts-node src/core/app.ts",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "20"
+  },
+  "main": "dist/index.js",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2",
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^5.0.0"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.8",
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^4.9.0"
+  },
+  "private": true
+}
+[debug] [2024-06-24T12:35:34.775Z] Building nodejs source
+[debug] [2024-06-24T12:35:34.775Z] Failed to find version of module node: reached end of search path /home/adriantori/Documents/eBuddy/Test/backend-repo/node_modules
+[info] ✔  functions: Using node@20 from host. 
+[debug] [2024-06-24T12:35:34.778Z] Could not find functions.yaml. Must use http discovery
+[debug] [2024-06-24T12:35:34.781Z] Found firebase-functions binary at '/home/adriantori/Documents/eBuddy/Test/backend-repo/node_modules/.bin/firebase-functions'
+[info] Serving at port 8307
+
+[debug] [2024-06-24T12:35:35.520Z] Got response from /__/functions.yaml {"endpoints":{"api":{"platform":"gcfv1","availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"serviceAccountEmail":null,"vpc":null,"httpsTrigger":{},"entryPoint":"api"}},"specVersion":"v1alpha1","requiredAPIs":[]}
