@@ -1,17 +1,25 @@
-import {Request, Response, NextFunction} from "express";
-import {admin} from "../config/firebaseConfig";
+// backend-repo/middleware/authMiddleware.ts
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+import { jwtSecret } from '../config/firebaseConfig';
 
+interface DecodedToken {
+  userId: string;
+}
 
-export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
-  const token = req.headers.authorization?.split(" ")[1];
+export const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
+  const token = req.headers.authorization?.split(' ')[1];
+
   if (!token) {
-    return res.status(401).send({error: "Unauthorized"});
+    return res.status(401).send({ error: 'Unauthorized' });
   }
 
   try {
-    await admin.auth().verifyIdToken(token);
+    const decodedToken = jwt.verify(token, jwtSecret) as DecodedToken;
+    req.userId = decodedToken.userId;
     next();
   } catch (error) {
-    res.status(401).send({error: "Unauthorized"});
+    console.error('Error verifying token:', error);
+    return res.status(401).send({ error: 'Unauthorized' });
   }
 };

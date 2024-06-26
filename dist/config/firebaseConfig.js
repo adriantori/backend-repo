@@ -23,15 +23,19 @@ var __importStar = (this && this.__importStar) || function (mod) {
     return result;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.db = exports.admin = void 0;
+exports.jwtSecret = exports.db = exports.admin = void 0;
 const admin = __importStar(require("firebase-admin"));
 exports.admin = admin;
-const firestore_1 = require("firebase-admin/firestore");
-const serviceAccount = require("./creds.json");
-if (!admin.apps.length) {
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-    });
-}
-const db = (0, firestore_1.getFirestore)();
+const jwtSecret = 'your_jwt_secret';
+exports.jwtSecret = jwtSecret;
+const firebaseConfig = {
+    apiKey: "AIzaSyDR9jMyh32jyww54wAn2G4vHMEhSEAeqsY",
+    authDomain: "ebuddy-11b3e.firebaseapp.com",
+    projectId: "ebuddy-11b3e",
+    storageBucket: "ebuddy-11b3e.appspot.com",
+    messagingSenderId: "860914138673",
+    appId: "1:860914138673:web:548fd76d01382109d0df10",
+};
+admin.initializeApp(firebaseConfig);
+const db = admin.firestore();
 exports.db = db;

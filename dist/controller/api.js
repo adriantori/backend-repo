@@ -9,13 +9,14 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.helloWorld = exports.fetchUserData = exports.updateUserData = void 0;
+exports.helloWorld = exports.login = exports.fetchUserData = exports.updateUserData = void 0;
 const firebaseConfig_1 = require("../config/firebaseConfig");
 const ApiError_1 = require("../entities/ApiError");
+const authUtils_1 = require("../utils/authUtils");
 const updateUserData = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const { userId, userData } = req.body;
-        yield firebaseConfig_1.db.collection("USERS").doc(userId).set(userData, { merge: true });
+        const { userId, username } = req.body;
+        yield firebaseConfig_1.db.collection('USERS').doc(userId).set({ username }, { merge: true });
         res.status(200).send({ message: "User data updated successfully" });
     }
     catch (error) {
@@ -37,6 +38,27 @@ const fetchUserData = (req, res, next) => __awaiter(void 0, void 0, void 0, func
     }
 });
 exports.fetchUserData = fetchUserData;
+const login = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email, password } = req.body;
+    try {
+        const userSnapshot = yield firebaseConfig_1.db.collection('USERS').where('email', '==', email).get();
+        if (userSnapshot.empty) {
+            throw new ApiError_1.ApiError('User not found', 404);
+        }
+        const userDoc = userSnapshot.docs[0];
+        const userData = userDoc.data();
+        if (!password === userData.password) {
+            throw new ApiError_1.ApiError("Invalid password", 401);
+        }
+        const jwtToken = (0, authUtils_1.generateJWT)(userDoc.id);
+        res.status(200).json({ token: jwtToken, data: userData });
+    }
+    catch (error) {
+        console.error("Error logging in:", error);
+        next(new ApiError_1.ApiError("Invalid credentials", 401));
+    }
+});
+exports.login = login;
 const helloWorld = (res) => {
     res.status(200).send("hello world");
 };
