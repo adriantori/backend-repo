@@ -15,20 +15,20 @@ const ApiError_1 = require("../entities/ApiError");
 const updateUserData = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { userId, userData } = req.body;
-        yield firebaseConfig_1.db.collection('USERS').doc(userId).set(userData, { merge: true });
-        res.status(200).send({ message: 'User data updated successfully' });
+        yield firebaseConfig_1.db.collection("USERS").doc(userId).set(userData, { merge: true });
+        res.status(200).send({ message: "User data updated successfully" });
     }
     catch (error) {
-        next(new ApiError_1.ApiError('Failed to update user data', 500));
+        next(new ApiError_1.ApiError("Failed to update user data", 500));
     }
 });
 exports.updateUserData = updateUserData;
 const fetchUserData = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const { userId } = req.params;
-        const userDoc = yield firebaseConfig_1.db.collection('USERS').doc(userId).get();
+        const userDoc = yield firebaseConfig_1.db.collection("USERS").doc(userId).get();
         if (!userDoc.exists) {
-            throw new ApiError_1.ApiError('User not found', 404);
+            throw new ApiError_1.ApiError("User not found", 404);
         }
         res.status(200).send(userDoc.data());
     }

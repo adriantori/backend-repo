@@ -13,16 +13,16 @@ exports.authMiddleware = void 0;
 const firebaseConfig_1 = require("../config/firebaseConfig");
 const authMiddleware = (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
-    const token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(' ')[1];
+    const token = (_a = req.headers.authorization) === null || _a === void 0 ? void 0 : _a.split(" ")[1];
     if (!token) {
-        return res.status(401).send({ error: 'Unauthorized' });
+        return res.status(401).send({ error: "Unauthorized" });
     }
     try {
         yield firebaseConfig_1.admin.auth().verifyIdToken(token);
         next();
     }
     catch (error) {
-        res.status(401).send({ error: 'Unauthorized' });
+        res.status(401).send({ error: "Unauthorized" });
     }
 });
 exports.authMiddleware = authMiddleware;

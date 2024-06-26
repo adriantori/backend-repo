@@ -1,12 +1,13 @@
-import { Router } from 'express';
-import { updateUserData, fetchUserData, helloWorld } from '../controller/api';
-import { authMiddleware } from '../middleware/authMiddleware';
+import {Router} from "express";
+import {updateUserData, fetchUserData, helloWorld} from "../controller/api";
+import {authMiddleware} from "../middleware/authMiddleware";
 
+// eslint-disable-next-line new-cap
 const router = Router();
 
-router.get('/get-user/:userId', authMiddleware, fetchUserData);
-router.get('/', helloWorld)
+router.get("/get-user/:userId", authMiddleware, fetchUserData);
+router.get("/", helloWorld);
 
-router.put('/update-user', authMiddleware, updateUserData);
+router.put("/update-user", authMiddleware, updateUserData);
 
-export { router as userRoutes };
+export {router as userRoutes};

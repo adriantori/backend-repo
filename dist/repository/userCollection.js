@@ -12,11 +12,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUser = exports.updateUser = void 0;
 const firebaseConfig_1 = require("../config/firebaseConfig");
 const updateUser = (userId, userData) => __awaiter(void 0, void 0, void 0, function* () {
-    yield firebaseConfig_1.db.collection('USERS').doc(userId).set(userData, { merge: true });
+    yield firebaseConfig_1.db.collection("USERS").doc(userId).set(userData, { merge: true });
 });
 exports.updateUser = updateUser;
 const getUser = (userId) => __awaiter(void 0, void 0, void 0, function* () {
-    const userDoc = yield firebaseConfig_1.db.collection('USERS').doc(userId).get();
+    const userDoc = yield firebaseConfig_1.db.collection("USERS").doc(userId).get();
     return userDoc.exists ? userDoc.data() : null;
 });
 exports.getUser = getUser;
